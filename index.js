@@ -37,7 +37,9 @@ const parser = csv.parse((error, data) => {
 })
 
 const parser2 = csv.parse({ from_line: 2 },(error, data) => {
+  let count = 0;
   data.forEach((element, index, array) => {
+    count++;
     let s = element[8].split('-');
     let now = s[0] + s[1] + ' GMT';
     let dnow = new Date(now);
@@ -72,7 +74,7 @@ const parser2 = csv.parse({ from_line: 2 },(error, data) => {
     // use closest
     // console.log(closest);
     let kenzan = Math.abs(lat - closest[1]) + Math.abs(lon - closest[2]);
-    console.log(kenzan);
+    console.log( count + ',' +kenzan);
     if (kenzan > 0) {
       console.log("error");
       process.exit(1);
