@@ -24,6 +24,7 @@ const parser = csv.parse((error, data) => {
         row.push(date.getTime());//time
         row.push(element[12]);//lat
         row.push(element[13]);//lon
+        row.push(date);//time
 
         //新たに1行分の配列(row)を作成し、新配列(newData)に追加。
         newData.push(row);
@@ -77,7 +78,7 @@ const parser2 = csv.parse({ from_line: 2 },(error, data) => {
     console.log( count + ',' +kenzan);
     if (kenzan > 0) {
       console.log("error");
-      process.exit(1);
+      // process.exit(1);
     }
 
   })
